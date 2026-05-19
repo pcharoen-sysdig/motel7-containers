@@ -38,8 +38,8 @@ Push images to your registry, then deploy them to your cluster.
 
 | Scenario | Required env vars |
 |---|---|
-| `redis-client` | `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD` |
-| `postgres-client` | `DATABASE_URL` |
+| `redis-client` | `REDIS_HOST`, `REDIS_PORT` (default 6379), `REDIS_PASSWORD` |
+| `postgres-client` | `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_PORT` (default 5432) |
 
 ### `privileged-rejected`
 
