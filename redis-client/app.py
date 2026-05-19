@@ -16,7 +16,7 @@ def main():
         decode_responses=True,
     )
     while True:
-        count = r.incr("motel7:test:counter")
+        count = r.incr("test:counter")
         log.info("counter = %d", count)
         time.sleep(5)
 
