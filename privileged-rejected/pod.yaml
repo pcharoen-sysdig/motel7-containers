@@ -1,0 +1,16 @@
+# Apply this to a motel7-managed namespace to verify admission is rejected.
+# Kyverno ClusterPolicy should block: privileged=true, runAsNonRoot=false, allowPrivilegeEscalation=true.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged-test
+  # namespace: replace with your motel7 project namespace
+spec:
+  containers:
+    - name: privileged-test
+      image: motel7-test/privileged-rejected:latest
+      securityContext:
+        privileged: true
+        runAsNonRoot: false
+        runAsUser: 0
+        allowPrivilegeEscalation: true
