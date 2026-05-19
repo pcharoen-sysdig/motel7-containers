@@ -9,10 +9,17 @@ log = logging.getLogger(__name__)
 
 
 def main():
+    host = os.environ.get("REDIS_HOST")
+    if not host:
+        log.error("REDIS_HOST is not set — cannot connect to Redis")
+        return
+    port = int(os.environ.get("REDIS_PORT", 6379))
+    password = os.environ.get("REDIS_PASSWORD")
+    log.info("REDIS_HOST = %s  REDIS_PORT = %s  REDIS_PASSWORD = %s", host, port, "set" if password else "not set")
     r = redis.Redis(
-        host=os.environ["REDIS_HOST"],
-        port=int(os.environ.get("REDIS_PORT", 6379)),
-        password=os.environ.get("REDIS_PASSWORD"),
+        host=host,
+        port=port,
+        password=password,
         decode_responses=True,
     )
     while True:
