@@ -19,6 +19,6 @@ RUN apt-get update \
         ca-certificates \
         git \
         redis-tools \
-        postgresql-client-18 \
+        postgresql-client
     && rm -rf /var/lib/apt/lists/*
 CMD ["bash", "-c", "echo '=== environment variables ===' && env | sort && echo '=== end ===' && sleep infinity"]
